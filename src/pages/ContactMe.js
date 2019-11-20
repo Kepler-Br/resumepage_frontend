@@ -79,8 +79,17 @@ const ContactMe = (props) => {
             popupContext.addPopup(currentTranslation.onMessageEmpty, ERROR_POPUP);
             return;
         }
-        popupContext.addPopup(currentTranslation.onSubmit, INFO_POPUP);
-        axios.get("localhost:");
+        axios.get(`http://127.0.0.1:8000/api/message.send?contacts=${fields.contactsInputField}&name=${fields.nameInputField}&message=${fields.messageInputField}`)
+            .then((res) => {popupContext.addPopup(currentTranslation.onSubmit, INFO_POPUP);})
+            .catch((reason) => {
+                let errorMessage = "Denied: ";
+                try {
+                    errorMessage += reason.response.data.error
+                } catch (e) {
+                    errorMessage += reason.toString();
+                }
+                popupContext.addPopup(errorMessage, ERROR_POPUP);
+            });
     };
 
     return (
