@@ -15,7 +15,6 @@ const translationRus = {
 
 const ProjectPage = (props) => {
     const interfaceContext = useContext(InterfaceContext);
-    // const popupContext = useContext(PopupContext);
     let currentTranslation;
     if (interfaceContext.currentLanguage === LANGUAGE_EN)
         currentTranslation = translationEng;
