@@ -36,12 +36,24 @@ const Navbar = (props) => {
     return (
         <nav className="navbar navbar-bg-purple sticky-top">
             <Link to="/" className="navbar-brand navbar-text-active">Kepler-Br</Link>
-            <div className="navbar-nav flex-row">
-                <Link to="/projects" className="nav-item nav-link mr-4 navbar-text-inactive">{currentTranslation.projects}</Link>
-                <Link to="/renders" className="nav-item nav-link mr-4 navbar-text-inactive">{currentTranslation.renders}</Link>
-                <Link to="/about" className="nav-item nav-link mr-4 navbar-text-inactive">{currentTranslation.about}</Link>
-                <Link to="/contact_me" className="nav-item nav-link mr-4 navbar-text-inactive">{currentTranslation.contact}</Link>
+
+            <div className=" navbar-nav-scroll">
+                <ul className="navbar-nav flex-row">
+                    <li className="nav-item">
+                        <Link to="/projects" className="nav-item nav-link mr-3 navbar-text-inactive">{currentTranslation.projects}</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/renders" className="nav-item nav-link mr-3 navbar-text-inactive">{currentTranslation.renders}</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/about" className="nav-item nav-link mr-3 navbar-text-inactive">{currentTranslation.about}</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/contact_me" className="nav-item nav-link mr-3 navbar-text-inactive">{currentTranslation.contact}</Link>
+                    </li>
+                </ul>
             </div>
+
             <div className="nav-item dropdown">
                 <span className="nav-item nav-link dropdown-toggle mr-md-2 navbar-text-inactive" id="bd-versions"
                     data-toggle="dropdown">

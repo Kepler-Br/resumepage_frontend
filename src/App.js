@@ -11,27 +11,28 @@ import "./App.css";
 import ImageView from "./pages/ImageView";
 
 function App() {
-  return (
-    <div className="App">
-      <InterfaceContextProvider>
-        <PopupContextProvider>
-          <BrowserRouter>
-            <Navbar/>
-            <div className="container-fluid mt-2">
-              <Switch>
-                {/*<Route exact path="/" component={AboutPage}*/}
-                <Route exact path="/contact_me" component={ContactMe} />
-                <Route exact path="/projects" component={MyProjects} />
-                <Route exact path="/project/:id" component={ProjectPage} />
-                <Route exact path="/image/:id" component={ImageView} />
-              </Switch>
-            </div>
-            <PopupContainer/>
-          </BrowserRouter>
-        </PopupContextProvider>
-      </InterfaceContextProvider>
-    </div>
-  );
+    console.log("Oh, hi there!");
+    return (
+        <div className="App">
+          <InterfaceContextProvider>
+            <PopupContextProvider>
+              <BrowserRouter>
+                <Navbar/>
+                <div className="container-fluid mt-2">
+                  <Switch>
+                    {/*<Route exact path="/" component={AboutPage}*/}
+                    <Route exact path="/contact_me" component={ContactMe} />
+                    <Route exact path="/projects" component={MyProjects} />
+                    <Route exact path="/project/:id" component={ProjectPage} />
+                    <Route exact path="/image/:id" component={ImageView} />
+                  </Switch>
+                </div>
+                <PopupContainer/>
+              </BrowserRouter>
+            </PopupContextProvider>
+          </InterfaceContextProvider>
+        </div>
+    );
 }
 
 export default App;
