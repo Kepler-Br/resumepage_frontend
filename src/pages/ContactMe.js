@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { LANGUAGE_RU, LANGUAGE_EN, InterfaceContext } from '../context/InterfaceContext';
 import { ERROR_POPUP, INFO_POPUP, PopupContext } from '../context/PopupContext';
 import axios from 'axios';
+import Cookies from "universal-cookie";
 
 const translationEng = {
     submit: "Submit",
@@ -9,6 +10,7 @@ const translationEng = {
     onNameEmpty: "Name field is required.",
     onContactsEmpty: "Contacts field is required.",
     onMessageEmpty: "Message field is required.",
+    tooFast: "You're too fast! Try in a day.",
 
     contactsLabel: "Your contacts*",
     contactsInputPlaceholder: "Contacts",
@@ -27,6 +29,7 @@ const translationRus = {
     onNameEmpty: "Поле Имя не должно быть пустым.",
     onContactsEmpty: "Поле Контакты не должно быть пустым.",
     onMessageEmpty: "Поле Сообщение не должно быть пустым.",
+    tooFast: "Слишком быстро! Попробуйте через день.",
 
     contactsLabel: "Ваши контакты*",
     contactsInputPlaceholder: "Контакты",
@@ -67,6 +70,18 @@ const ContactMe = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        const PERIOD_BETWEEN_MESSAGES = 60*60*24;
+        let cookies = new Cookies();
+        let lastMessageTime = cookies.get("last_message");
+        if (typeof parseInt(lastMessageTime) !== "number") {
+            cookies.set("last_message", 0, { path: '/' });
+            lastMessageTime = 0;
+        }
+        const currentTime = Math.round((new Date()).getTime()/1000);
+        if ((currentTime - lastMessageTime) < PERIOD_BETWEEN_MESSAGES) {
+            popupContext.addPopup(currentTranslation.tooFast, ERROR_POPUP);
+            return;
+        }
         if (fields.contactsInputField.length === 0) {
             popupContext.addPopup(currentTranslation.onContactsEmpty, ERROR_POPUP);
             return;
@@ -80,11 +95,14 @@ const ContactMe = (props) => {
             return;
         }
         axios.get(`http://127.0.0.1:8000/api/message.send?contacts=${fields.contactsInputField}&name=${fields.nameInputField}&message=${fields.messageInputField}`)
-            .then((res) => {popupContext.addPopup(currentTranslation.onSubmit, INFO_POPUP);})
+            .then((res) => {
+                popupContext.addPopup(currentTranslation.onSubmit, INFO_POPUP);
+                cookies.set("last_message", currentTime, { path: '/' });
+            })
             .catch((reason) => {
                 let errorMessage = "Denied: ";
                 try {
-                    errorMessage += reason.response.data.error
+                    errorMessage += reason.response.data.error;
                 } catch (e) {
                     errorMessage += reason.toString();
                 }
