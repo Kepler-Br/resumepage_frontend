@@ -62,7 +62,7 @@ const ProjectsView = (props) => {
 
     useEffect(() => {
         fetchProject();
-    }, []);
+    }, [props.projectId]);
     // console.log(titleImage);
     return (
         <div className="col-md-9 col-xl-10 mt-2">
