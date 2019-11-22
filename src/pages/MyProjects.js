@@ -3,21 +3,8 @@ import { LANGUAGE_RU, LANGUAGE_EN, InterfaceContext } from '../context/Interface
 import axios from 'axios';
 import ProjectsSidebar from "../components/ProjectsSidebar";
 import ProjectImage from "../components/ProjectImage";
-const translationEng = {
-    pick: "<- Pick one of these.",
-};
-
-const translationRus = {
-    pick: "<- Выберите один из них.",
-};
 
 const MyProjects = (props) => {
-    const interfaceContext = useContext(InterfaceContext);
-    let currentTranslation;
-    if (interfaceContext.currentLanguage === LANGUAGE_EN)
-        currentTranslation = translationEng;
-    else if (interfaceContext.currentLanguage === LANGUAGE_RU)
-        currentTranslation = translationRus;
     const [projectImages, setProjectImages] = useState([]);
     const [projects, setProjects] = useState([]);
 
