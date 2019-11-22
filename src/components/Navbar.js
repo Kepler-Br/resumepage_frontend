@@ -34,7 +34,7 @@ const Navbar = (props) => {
     };
 
     return (
-        <nav className="navbar navbar-bg-purple sticky-top">
+        <nav className="navbar navbar-bg-purple sticky-top justify-content-center justify-content-sm-between">
             <Link to="/" className="navbar-brand navbar-text-active">Kepler-Br</Link>
 
             <div className=" navbar-nav-scroll">
