@@ -10,6 +10,7 @@ import ProjectPage from "./pages/ProjectPage";
 import "./App.css";
 import ImageView from "./pages/ImageView";
 import MyRenders from "./pages/MyRenders";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
     console.log("Oh, hi there!");
@@ -25,6 +26,7 @@ function App() {
                     <Route exact path="/contact_me" component={ContactMe} />
                     <Route exact path="/projects" component={MyProjects} />
                     <Route exact path="/renders" component={MyRenders} />
+                    <Route exact path="/about" component={AboutPage} />
                     <Route exact path="/project/:id" component={ProjectPage} />
                     <Route exact path="/image/:id" component={ImageView} />
                   </Switch>
