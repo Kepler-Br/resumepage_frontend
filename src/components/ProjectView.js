@@ -35,7 +35,7 @@ const ProjectsView = (props) => {
     const fetchProject = async () => {
         let response;
         try {
-            response = await axios.get(`http://127.0.0.1:8000/api/project.get?id=${props.projectId}`);
+            response = await axios.get(`/api/project.get?id=${props.projectId}`);
         } catch (e) {
             popupContext.addPopup(currentTranslation.onFetchError, ERROR_POPUP);
             return;
@@ -43,7 +43,7 @@ const ProjectsView = (props) => {
         const screenshotIds = response.data.images;
         setProject(response.data);
         try {
-            response = await axios.get(`http://127.0.0.1:8000/api/image.get?id=${response.data.titleImage}`);
+            response = await axios.get(`/api/image.get?id=${response.data.titleImage}`);
             setTitleImage(response.data);
         } catch (e) {
             console.error("Image not loaded. Cannot get response from server.")
@@ -51,7 +51,7 @@ const ProjectsView = (props) => {
         let screenshots = [];
         for (let i = 0; i < screenshotIds.length; i++) {
             try {
-                response = await axios.get(`http://127.0.0.1:8000/api/image.get?id=${screenshotIds[i]}`);
+                response = await axios.get(`/api/image.get?id=${screenshotIds[i]}`);
                 screenshots.push(response.data);
             } catch (e) {
                 console.error("Image not loaded. Cannot get response from server.");

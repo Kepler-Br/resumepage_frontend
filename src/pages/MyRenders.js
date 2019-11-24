@@ -25,7 +25,7 @@ const MyRenders = (props) => {
     const fetchRenders = async () => {
         let response;
         try {
-            response = await axios.get("http://127.0.0.1:8000/api/render.get_all");
+            response = await axios.get("/api/render.get_all");
             setRenderList(response.data);
         } catch (e) {
             popupContext.addPopup(currentTranslation.onFetchError, ERROR_POPUP);

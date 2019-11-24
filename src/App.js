@@ -22,11 +22,11 @@ function App() {
                 <Navbar/>
                 <div className="container-fluid mt-2">
                   <Switch>
-                    {/*<Route exact path="/" component={AboutPage}*/}
                     <Route exact path="/contact_me" component={ContactMe} />
                     <Route exact path="/projects" component={MyProjects} />
                     <Route exact path="/renders" component={MyRenders} />
                     <Route exact path="/about" component={AboutPage} />
+                    <Route exact path="/" component={AboutPage} />
                     <Route exact path="/project/:id" component={ProjectPage} />
                     <Route exact path="/image/:id" component={ImageView} />
                   </Switch>
