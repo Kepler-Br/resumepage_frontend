@@ -19,11 +19,11 @@ const AboutPage = (props) => {
     let currentTranslation;
     if (interfaceContext.currentLanguage === LANGUAGE_EN) {
         currentTranslation = translationEng;
-        translatedBody = about.en;
+        translatedBody = about.bodyEn;
     }
     else if (interfaceContext.currentLanguage === LANGUAGE_RU) {
         currentTranslation = translationRus;
-        translatedBody = about.ru;
+        translatedBody = about.bodyRu;
     }
 
     const fetchAbout = async () => {
