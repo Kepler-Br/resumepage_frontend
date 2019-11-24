@@ -94,7 +94,7 @@ const ContactMe = (props) => {
             popupContext.addPopup(currentTranslation.onMessageEmpty, ERROR_POPUP);
             return;
         }
-        axios.get(`http://127.0.0.1:8000/api/message.send?contacts=${fields.contactsInputField}&name=${fields.nameInputField}&message=${fields.messageInputField}`)
+        axios.get(`/api/message.send?contacts=${fields.contactsInputField}&name=${fields.nameInputField}&message=${fields.messageInputField}`)
             .then((res) => {
                 popupContext.addPopup(currentTranslation.onSubmit, INFO_POPUP);
                 cookies.set("last_message", currentTime, { path: '/' });

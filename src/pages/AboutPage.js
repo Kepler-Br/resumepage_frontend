@@ -29,7 +29,7 @@ const AboutPage = (props) => {
     const fetchAbout = async () => {
         let response;
         try {
-            response = await axios.get("http://127.0.0.1:8000/api/about.get");
+            response = await axios.get("/api/about.get");
             setAbout(response.data);
         } catch (e) {
             popupContext.addPopup(currentTranslation.onFetchError, ERROR_POPUP);

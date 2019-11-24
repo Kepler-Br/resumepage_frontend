@@ -10,7 +10,7 @@ const MyProjects = (props) => {
     const fetchImages = async () => {
         let response;
         try {
-            response = await axios.get("http://127.0.0.1:8000/api/project.get_all");
+            response = await axios.get("/api/project.get_all");
             setProjects(response.data);
         } catch (e) {
             return;
@@ -19,7 +19,7 @@ const MyProjects = (props) => {
         let images = [];
         for (let i = 0; i < imageIds.length; i++) {
             try {
-                response = await axios.get(`http://127.0.0.1:8000/api/image.get?id=${imageIds[i]}`);
+                response = await axios.get(`/api/image.get?id=${imageIds[i]}`);
                 images.push(response.data);
             } catch (e) {
                 console.error("Image not loaded. Cannot get response from server.");

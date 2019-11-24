@@ -29,7 +29,7 @@ const ProjectsSidebar = (props) => {
     const fetchProjects = async () => {
         let response;
         try {
-            response = await axios.get("http://127.0.0.1:8000/api/project.get_all");
+            response = await axios.get("/api/project.get_all");
         } catch (e) {
             popupContext.addPopup(currentTranslation.onFetchError, ERROR_POPUP);
             return;

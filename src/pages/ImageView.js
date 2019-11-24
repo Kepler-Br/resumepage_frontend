@@ -29,7 +29,7 @@ const ImageView = (props) => {
     const fetchImageData = async () => {
         let response;
         try {
-            response = await axios.get(`http://127.0.0.1:8000/api/image.get?id=${props.match.params.id}`);
+            response = await axios.get(`/api/image.get?id=${props.match.params.id}`);
             setData(response.data);
         } catch (e) {
             popupContext.addPopup(currentTranslation.onFetchError, ERROR_POPUP);
