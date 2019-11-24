@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { LANGUAGE_RU, LANGUAGE_EN, InterfaceContext } from '../context/InterfaceContext';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProjectsSidebar from "../components/ProjectsSidebar";
 import ProjectImage from "../components/ProjectImage";
