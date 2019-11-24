@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { LANGUAGE_RU, LANGUAGE_EN, InterfaceContext } from '../context/InterfaceContext';
 import axios from 'axios';
-import ProjectsSidebar from "../components/ProjectsSidebar";
-import ProjectImage from "../components/ProjectImage";
 import {ERROR_POPUP, PopupContext} from "../context/PopupContext";
 import RenderCard from "../components/RenderCard";
 
@@ -17,8 +15,6 @@ const translationRus = {
 const MyRenders = (props) => {
     const interfaceContext = useContext(InterfaceContext);
     const popupContext = useContext(PopupContext);
-    // const [projectImages, setProjectImages] = useState([]);
-    // const [projects, setProjects] = useState([]);
     const [renderList, setRenderList] = useState([]);
     let currentTranslation;
     if (interfaceContext.currentLanguage === LANGUAGE_EN)

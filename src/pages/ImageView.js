@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { LANGUAGE_RU, LANGUAGE_EN, InterfaceContext } from '../context/InterfaceContext';
-import { ERROR_POPUP, INFO_POPUP, PopupContext } from '../context/PopupContext';
+import { ERROR_POPUP, PopupContext } from '../context/PopupContext';
 import axios from 'axios';
-import ProjectsSidebar from "../components/ProjectsSidebar";
 
 const translationEng = {
     onFetchError: "Cannot fetch image data. Try again later.",
